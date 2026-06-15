@@ -168,7 +168,16 @@ async function translateText() {
 }
 
 async function requestDeepSeek(payload) {
-  throw new Error("GitHub Pages 只能发布静态网页，不能直接运行 DeepSeek API。学习手册和朗读可以使用；AI 翻译需要后端服务。");
+  const response = await fetch("/api/deepseek", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data.error || `请求失败，HTTP ${response.status}`);
+  }
+  return data;
 }
 
 function renderMessages() {
