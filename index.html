@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>哈萨克语 AI 助手</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="masthead">
+        <section class="intro" aria-label="应用标题">
+          <p class="eyebrow">中文 / Қазақша / قازاقشا</p>
+          <h1>哈萨克语 AI 助手</h1>
+          <p class="lead">面向新疆哈萨克族日常沟通：双语 AI 聊天、双向翻译、字母发音和常用词学习。</p>
+        </section>
+        <section class="quick-panel" aria-label="语言设置">
+          <label class="field-label" for="scriptSelect">哈萨克语文字</label>
+          <select id="scriptSelect">
+            <option value="arabic">阿拉伯字母（新疆常用）</option>
+            <option value="cyrillic">西里尔字母</option>
+          </select>
+          <div id="status" class="status">准备就绪</div>
+        </section>
+      </header>
+
+      <nav class="mode-tabs" aria-label="功能切换">
+        <button class="mode-tab active" data-mode="chat" type="button">AI 聊天</button>
+        <button class="mode-tab" data-mode="translate" type="button">双向翻译</button>
+        <button class="mode-tab" data-mode="learn" type="button">学习手册</button>
+      </nav>
+
+      <section id="chatView" class="workspace">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="chatForm" class="composer">
+          <textarea
+            id="chatInput"
+            rows="2"
+            maxlength="900"
+            placeholder="输入中文或哈萨克语..."
+          ></textarea>
+          <button id="sendButton" class="primary-button" type="submit">发送</button>
+        </form>
+      </section>
+
+      <section id="translateView" class="workspace translate-view hidden">
+        <div class="direction-bar">
+          <button class="direction active" data-direction="zh2kk" type="button">中译哈</button>
+          <button id="swapButton" class="swap-button" type="button" aria-label="切换方向">⇄</button>
+          <button class="direction" data-direction="kk2zh" type="button">哈译中</button>
+        </div>
+
+        <textarea
+          id="translateInput"
+          class="translate-input"
+          rows="7"
+          maxlength="1400"
+          placeholder="输入中文..."
+        ></textarea>
+        <div class="audio-actions">
+          <button id="speakSource" class="ghost-button no-margin" type="button">朗读原文</button>
+          <button id="stopSpeech" class="ghost-button no-margin" type="button">停止朗读</button>
+        </div>
+        <button id="translateButton" class="primary-button wide" type="button">立即翻译</button>
+
+        <article class="result-card">
+          <div class="result-head">
+            <span>翻译结果</span>
+            <div class="result-actions">
+              <button id="speakResult" class="ghost-button no-margin" type="button">朗读译文</button>
+              <button id="copyTranslate" class="ghost-button no-margin" type="button">复制</button>
+            </div>
+          </div>
+          <p id="translationResult" class="result-text">翻译后的内容会显示在这里。</p>
+        </article>
+      </section>
+
+      <section id="learnView" class="workspace learn-view hidden">
+        <div class="learn-toolbar">
+          <input id="learnSearch" class="search-input" type="search" placeholder="搜索中文、哈萨克语或发音..." />
+          <button id="randomCard" class="ghost-button no-margin" type="button">随机练习</button>
+        </div>
+        <div id="practiceCard" class="practice-card hidden"></div>
+        <div id="learnSections" class="learn-sections"></div>
+      </section>
+    </main>
+
+    <script src="./learning-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
