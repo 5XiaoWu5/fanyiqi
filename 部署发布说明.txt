@@ -1,0 +1,43 @@
+哈萨克语 AI 网站部署发布说明
+
+推荐部署平台：Vercel
+
+一、需要准备
+1. 一个 GitHub 账号
+2. 一个 Vercel 账号
+3. 一个 DeepSeek API Key
+
+二、要上传的文件夹
+上传这个文件夹：
+C:\Users\Administrator\Documents\哈萨克语AI\网站
+
+三、Vercel 环境变量
+在 Vercel 项目的 Settings -> Environment Variables 中添加：
+
+DEEPSEEK_API_KEY=你的 DeepSeek API Key
+DEEPSEEK_MODEL=deepseek-chat
+
+注意：
+- 不要把 .env 文件上传到公开仓库。
+- 线上必须在 Vercel 后台配置 DEEPSEEK_API_KEY。
+
+四、发布后访问
+Vercel 发布完成后，会给你一个网址，例如：
+https://你的项目名.vercel.app
+
+打开这个网址就能使用：
+- AI 聊天
+- 双向翻译
+- 学习手册
+- 翻译前后朗读
+
+五、本地预览
+如果想先在电脑上看效果：
+1. 双击“启动网站.bat”
+2. 打开“网站地址.txt”里的 http://localhost:8787
+
+六、常见问题
+1. 如果翻译提示“请先配置 DEEPSEEK_API_KEY 环境变量”，说明线上没有配置 DeepSeek Key。
+2. 如果翻译一直失败，请检查 DeepSeek API Key 是否有效、账户是否有余额。
+3. 朗读功能使用浏览器自带语音。建议用最新版 Edge 或 Chrome，并在系统里安装中文语音包；网页会优先选择女声或更柔和的声线。
+4. 如果哈萨克语朗读不自然，这是浏览器语音包限制；文字翻译仍然可以正常使用。
